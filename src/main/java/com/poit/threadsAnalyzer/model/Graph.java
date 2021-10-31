@@ -1,6 +1,4 @@
 package com.poit.threadsAnalyzer.model;
-
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Stack;
 
@@ -14,12 +12,14 @@ public class Graph {
         nodes = new ArrayList<>(0);
         stack = new Stack<>();
     }
-
+    public Node getNode(int n){
+        return nodes.get(n);
+    }
     public void addNode(String operator){
         nodes.add(new Node(operator));
         adjMat.add(new ArrayList<Integer>(nodes.size() - 1));
         for(ArrayList<Integer> column:adjMat){
-            while(column.size() < 3) {
+            while(column.size() < nodes.size()) {
                 column.add(0);
             }
         }
@@ -48,9 +48,9 @@ public class Graph {
     public void dfs(int index){
         nodes.get(index).setVisited(true);
         stack.push(index);
-
         while(!stack.isEmpty()){
             int neighbour = check(stack.peek());
+
             if(neighbour == -1){
                 stack.pop();
             } else {
@@ -63,5 +63,15 @@ public class Graph {
         for(Node node: nodes){
             node.setVisited(false);
         }
+    }
+
+    public int findMax(){
+        int maxDepth = 0;
+        for(Node node: this.nodes){
+            if(node.getDepth() > maxDepth){
+                maxDepth = node.getDepth();
+            }
+        }
+        return maxDepth;
     }
 }
