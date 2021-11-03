@@ -22,7 +22,7 @@ public class Code {
     private void createGraph() {
         graph = new Graph();
         String tempCode = deleteCommentsAndStringsFromCode(this.code);
-        Pattern pattern = Pattern.compile("begin|((?<!end )while)|((?<!end )until)|if|for|end|when|break");
+        Pattern pattern = Pattern.compile("begin|((?<!end )while)|((?<!end )until)|loop|if|for|case|end");
         Matcher matcher = pattern.matcher(tempCode);
         graph.addNode("Code");
         int currentElem = 0;
