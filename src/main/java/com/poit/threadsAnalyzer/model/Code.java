@@ -104,11 +104,11 @@ public class Code {
         int allOperats = codeOperatorsCount(code, false);
         int conditions = codeOperatorsCount(code, true);
 
-        return Float.toString((float) conditions/allOperats);
+        return "Относительная сложность равна " + Float.toString((float) conditions/allOperats);
     }
 
     public String CL() {
-        return Integer.toString(codeOperatorsCount(code, true));
+        return "Относительная сложность равна " + Integer.toString(codeOperatorsCount(code, true));
     }
 
     public String deleteCommentsAndStringsFromCode(String code) {
