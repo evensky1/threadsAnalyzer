@@ -12,7 +12,6 @@ import java.util.regex.Pattern;
 public class Code {
     private String code;
     private Graph graph;
-    private int cl, CL;
 
     public Code() {
     }
@@ -102,15 +101,14 @@ public class Code {
     }
 
     public String cl() {
-        cl = codeOperatorsCount(code, false);
-        return Integer.toString(cl);
+        int allOperats = codeOperatorsCount(code, false);
+        int conditions = codeOperatorsCount(code, true);
+
+        return Float.toString((float) conditions/allOperats);
     }
 
     public String CL() {
-        cl = codeOperatorsCount(code, false);
-        int conditions = codeOperatorsCount(code, true);
-
-        return Float.toString((float) conditions/cl);
+        return Integer.toString(codeOperatorsCount(code, true));
     }
 
     public String deleteCommentsAndStringsFromCode(String code) {
