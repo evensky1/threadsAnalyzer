@@ -103,7 +103,7 @@ public class Code {
 
     public String cl() {
         cl = codeOperatorsCount(code, false);
-        return "";
+        return Integer.toString(cl);
     }
 
     public String CL() {
