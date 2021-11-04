@@ -74,8 +74,8 @@ public class Graph {
                 maxDepth = node.getDepth();
             }
         }
-        if (maxDepth == -1) {
-            maxDepth = 0;
+        if (maxDepth == 0) {
+            maxDepth = 1;
         }
         return maxDepth;
     }
