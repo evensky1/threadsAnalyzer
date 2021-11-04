@@ -16,7 +16,7 @@ public class Graph {
     public Node getNode(int n){
         return nodes.get(n);
     }
-    
+
     public void addNode(String operator){
         nodes.add(new Node(operator));
         adjMat.add(new ArrayList<Integer>(nodes.size() - 1));
@@ -73,6 +73,9 @@ public class Graph {
             if(node.getDepth() > maxDepth){
                 maxDepth = node.getDepth();
             }
+        }
+        if (maxDepth == -1) {
+            maxDepth = 0;
         }
         return maxDepth;
     }
