@@ -17,6 +17,8 @@ public class PageController {
 
     @PostMapping
     public String pageOut(@ModelAttribute("inputCode") Code code, Model model) {
+        model.addAttribute("cl", code.cl());
+        model.addAttribute("CL", code.CL());
         model.addAttribute("cli", code.CLI());
         return "mainPage";
     }
