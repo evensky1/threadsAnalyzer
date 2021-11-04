@@ -12,9 +12,11 @@ public class Graph {
         nodes = new ArrayList<>(0);
         stack = new Stack<>();
     }
+
     public Node getNode(int n){
         return nodes.get(n);
     }
+    
     public void addNode(String operator){
         nodes.add(new Node(operator));
         adjMat.add(new ArrayList<Integer>(nodes.size() - 1));

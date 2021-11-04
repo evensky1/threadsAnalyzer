@@ -22,7 +22,7 @@ public class Code {
     private void createGraph() {
         graph = new Graph();
         String tempCode = deleteCommentsAndStringsFromCode(this.code);
-        Pattern pattern = Pattern.compile("begin|((?<!end )while)|((?<!end )until)|loop|if|for|case|end");
+        Pattern pattern = Pattern.compile("\\bbegin\\b|((?<!end\\w)\\bwhile\\b)|((?<!end )\\buntil\\b)|\\bloop\\b|\\bif\\b|\\bfor\\b|\\bcase\\b|\\bend\\b");
         Matcher matcher = pattern.matcher(tempCode);
         graph.addNode("Code");
         int currentElem = 0;
@@ -30,7 +30,7 @@ public class Code {
         int tempDepth = 0;
         Stack<Integer> trace = new Stack<>();
         while (matcher.find()) {
-            if (!(matcher.group().equals("end") || matcher.group().equals("break"))) {
+            if (!matcher.group().equals("end")) {
                 graph.addNode(matcher.group());
                 currentElem++;
                 tempDepth++;
@@ -53,8 +53,8 @@ public class Code {
     }
 
     public String deleteCommentsAndStringsFromCode(String code) {
-        String codeTemp = code.replaceAll("(\".*?[^\\\\](\\\\\\\\)*\")|('.*?[^\\\\](\\\\\\\\)*')", " ");
-        codeTemp = codeTemp.replaceAll("(=begin\\s(.*\\r?\\n)*?=end\\s)|(#.*)", " ");
-        return codeTemp;
+        code = code.replaceAll("(\".*?[^\\\\](\\\\\\\\)*\")|('.*?[^\\\\](\\\\\\\\)*')", " ");
+        code = code.replaceAll("(=begin\\s(.*\\r?\\n)*?=end\\s)|(#.*)", " ");
+        return code;
     }
 }
