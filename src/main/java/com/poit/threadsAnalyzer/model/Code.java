@@ -97,18 +97,18 @@ public class Code {
 
     public String CLI() {
         createGraph();
-        return "Максимальный уровень вложенности равен " + (this.graph.findMax() - 1);
+        return "Максимальный уровень вложенности CLI равен " + (this.graph.findMax() - 1);
     }
 
     public String cl() {
         int allOperats = codeOperatorsCount(code, false);
         int conditions = codeOperatorsCount(code, true);
 
-        return "Относительная сложность равна " + Float.toString((float) conditions/allOperats);
+        return "Относительная сложность cl равна " + Float.toString((float) conditions/allOperats);
     }
 
     public String CL() {
-        return "Относительная сложность равна " + Integer.toString(codeOperatorsCount(code, true));
+        return "Абсолютная сложность CL равна " + Integer.toString(codeOperatorsCount(code, true));
     }
 
     public String deleteCommentsAndStringsFromCode(String code) {
